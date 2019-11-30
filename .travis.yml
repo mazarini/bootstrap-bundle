@@ -37,9 +37,6 @@ jobs:
 #   Symfony stable version
     - php: 7.2
       env: SYMFONY="4.4.*"
-    - php: 7.2
-      env: SYMFONY="5.0.*"
-           INSTALL="install"
 #   Symfony dev version
     - php: 7.2
       env: SYMFONY="4.4.*"
