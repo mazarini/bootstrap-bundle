@@ -24,7 +24,7 @@ twig:
 	twigcs lib/Resources/views -vv
 
 yaml:
-	bin/console lint:yaml config lib/Resources/config phpstan.neon.dist .travis.yml
+	bin/console lint:yaml lib/Resources/config config phpstan.neon.dist .travis.yml
 
 cs:
 	php-cs-fixer fix
@@ -33,7 +33,7 @@ stan:
 	if [ ! -d "var/cache/phpunit" ]; then vendor/bin/simple-phpunit install -v; fi
 	phpstan analyse lib src tests --level max
 
-validate: security composer yaml stan cs twig
+validate: security composer twig yaml stan cs
 
 ############################################
 #          P H P   V E R S I O N           #
@@ -58,16 +58,19 @@ validate: security composer yaml stan cs twig
 dev:
 	composer config minimum-stability dev
 
+beta:
+	composer config minimum-stability beta
+
 stable:
 	composer config minimum-stability stable
 
 4.3: stable
 	composer config extra.symfony.require 4.3.*
 
-4.4: dev
+4.4: beta
 	composer config extra.symfony.require 4.4.*
 
-5.0: dev
+5.0: beta
 	composer config extra.symfony.require 5.0.*
 
 ############################################
@@ -86,6 +89,22 @@ status:
 	bin/console server:status
 
 ############################################
+#             D A T A B A S E              #
+############################################
+
+dbdrop:
+	bin/console doctrine:database:drop --force
+
+dbinit:
+	bin/console doctrine:database:create
+	bin/console doctrine:schema:create --no-interaction
+
+dbreset: dbdrop dbinit
+
+fixtures:
+	bin/console doctrine:fixtures:load
+
+############################################
 #                T E S T S                 #
 ############################################
 
@@ -98,7 +117,7 @@ clean:
 test:
 	vendor/bin/simple-phpunit -v
 
-cover-text:
+cover-text: clean
 	vendor/bin/simple-phpunit -v --coverage-text
 
 cover: clean

@@ -19,23 +19,29 @@
 
 namespace App\Tests\Controller;
 
-use App\Tool\Folder;
+use Mazarini\TestBundle\Tool\Folder;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
 class UrlControllerTest extends WebTestCase
 {
+    protected $client;
+
+    public function setUp()
+    {
+        $this->client = static::createClient();
+    }
+
     /**
      * @dataProvider getUrls
      */
     public function testUrls(string $url)
     {
-        $client = static::createClient();
-        $client->request('GET', $url);
+        $this->client->request('GET', $url);
 
         $this->assertSame(
             Response::HTTP_OK,
-            $client->getResponse()->getStatusCode(),
+            $this->client->getResponse()->getStatusCode(),
             sprintf('The %s public URL loads correctly.', $url)
         );
     }
@@ -52,12 +58,11 @@ class UrlControllerTest extends WebTestCase
     protected function postUrls(string $step)
     {
         $url = '/'.$step.'.html';
-        $client = static::createClient();
-        $client->request('GET', $url);
+        $this->client->request('GET', $url);
 
         $this->assertSame(
             Response::HTTP_OK,
-            $client->getResponse()->getStatusCode(),
+            $this->client->getResponse()->getStatusCode(),
             sprintf('The %s public URL with loads correctly.', $url)
         );
     }
