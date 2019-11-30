@@ -1,0 +1,95 @@
+{# templates/step/01-Table.html.twig #}
+
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>rezrzrzer</h1>
+    {% embed '@MazariniBootstrap/table/base.html.twig' %}
+        {% block header %}
+            <th>Col A</th>
+            <th>Col B</th>
+            <th>Col C</th>
+            <th>Col D</th>
+        {% endblock header %}
+        {% block row %}
+        <td>{{ entity.COL1 }}</td>
+        <td>{{ entity.COL2 }}</td>
+        <td>{{ entity.COL3 }}</td>
+        <td>{{ entity.COL4 }}</td>
+        {% endblock row %}
+        {% block footer %}{% endblock footer %}
+    {% endembed %}
+
+    <table class="table table-striped">
+        {% embed '@MazariniBootstrap/table/content.html.twig' %}
+            {% block header %}
+                <th>Col A</th>
+                <th>Col B</th>
+                <th>Col C</th>
+                <th>Col D</th>
+            {% endblock header %}
+            {% block row %}
+            <td>{{ entity.COL1 }}</td>
+            <td>{{ entity.COL2 }}</td>
+            <td>{{ entity.COL3 }}</td>
+            <td>{{ entity.COL4 }}</td>
+            {% endblock row %}
+            {% block footer %}{% endblock footer %}
+        {% endembed %}
+    </table>
+
+    <table class="table table-bordered">
+        {% embed '@MazariniBootstrap/table/content.html.twig' %}
+            {% block header %}
+                <th>Col A</th>
+                <th>Col B</th>
+                <th>Col C</th>
+                <th>Col D</th>
+            {% endblock header %}
+            {% block row %}
+            <td>{{ entity.COL1 }}</td>
+            <td>{{ entity.COL2 }}</td>
+            <td>{{ entity.COL3 }}</td>
+            <td>{{ entity.COL4 }}</td>
+            {% endblock row %}
+            {% block footer %}{% endblock footer %}
+        {% endembed %}
+    </table>
+
+    <table class="table table-hover">
+        {% embed '@MazariniBootstrap/table/content.html.twig' %}
+            {% block header %}
+                <th>Col A</th>
+                <th>Col B</th>
+                <th>Col C</th>
+                <th>Col D</th>
+            {% endblock header %}
+            {% block row %}
+            <td>{{ entity.COL1 }}</td>
+            <td>{{ entity.COL2 }}</td>
+            <td>{{ entity.COL3 }}</td>
+            <td>{{ entity.COL4 }}</td>
+            {% endblock row %}
+            {% block footer %}{% endblock footer %}
+        {% endembed %}
+    </table>
+
+    <table class="table table-striped table-hover table-bordered">
+        {% embed '@MazariniBootstrap/table/content.html.twig' %}
+            {% block header %}
+                <th>Col A</th>
+                <th>Col B</th>
+                <th>Col C</th>
+                <th>Col D</th>
+            {% endblock header %}
+            {% block row %}
+            <td>{{ entity.COL1 }}</td>
+            <td>{{ entity.COL2 }}</td>
+            <td>{{ entity.COL3 }}</td>
+            <td>{{ entity.COL4 }}</td>
+            {% endblock row %}
+            {% block footer %}{% endblock footer %}
+        {% endembed %}
+    </table>
+
+{% endblock content %}

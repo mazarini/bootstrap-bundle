@@ -1,0 +1,18 @@
+{# lib/Resources/views/pagination/item.html.twig #}
+
+{% block item_container %}
+    {% set disabled = '' %}
+    {% if href == '#' %}
+        {% set disabled = ' disabled' %}
+    {% endif %}
+    {% if href == '' %}
+        {% set disabled = ' disabled active' %}
+    {% endif %}
+    <li class="page-item{{ disabled }}">
+        <a class="page-link" href="{{ href }}">
+            {% block label %}
+                {{ number }}
+            {% endblock label %}
+        </a>
+    </li>
+{% endblock item_container %}

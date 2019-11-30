@@ -1,0 +1,30 @@
+{# lib/Resources/views/pagination/nav.html.twig #}
+
+{% block pagination_container %}
+	{% if pagination.lastPage > 0 %}
+		<nav>
+			<ul class="pagination justify-content-center">
+				{% if pagination.lastPage > 5 %}
+					{% include '@MazariniBootstrap/pagination/first.html.twig' with {'href': pagination.first} only %}
+					{% include '@MazariniBootstrap/pagination/prev.html.twig' with {'href': pagination.prev} only %}
+					{% set start_n = pagination.currentPage %}
+					{% set end_n = pagination.currentPage %}
+				{% else %}
+					{% set start_n = 1 %}
+					{% set end_n = pagination.lastPage %}
+				{% endif %}
+				{% for number in start_n..end_n %}
+					{% if pagination.currentPage == number %}
+						{% include '@MazariniBootstrap/pagination/item.html.twig' with {'href': '', 'number': number} only %}
+					{% else %}
+						{% block number %}{% endblock number %}
+					{% endif %}
+				{% endfor %}
+				{% if pagination.lastPage > 5 %}
+					{% include '@MazariniBootstrap/pagination/next.html.twig' with {'href': pagination.next} only %}
+					{% include '@MazariniBootstrap/pagination/last.html.twig' with {'href': pagination.last} only %}
+				{% endif %}
+			</ul>
+		</nav>
+	{% endif %}
+{% endblock pagination_container %}

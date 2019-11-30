@@ -1,0 +1,9 @@
+{# lib/Resources/views/table/base.html.twig #}
+
+{% use '@MazariniBootstrap/table/content.html.twig' %}
+
+<table class="table">
+    {% block content_container %}
+        {{ parent() }}
+    {% endblock content_container %}
+</table>
