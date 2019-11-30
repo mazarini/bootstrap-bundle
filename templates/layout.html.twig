@@ -2,34 +2,26 @@
 
 {%- extends 'base.html.twig' -%}
 
-{% block title -%}
-    Title
-{%- endblock title %}
-
+{% block title %}
+	Title
+{% endblock title %}
 {% block stylesheets %}
-    {{ parent() }}
-    <style>
-        body {
-            padding-top: 2rem;
-        }
-    </style>
+	{{ parent() }}
+	<style>
+		body {
+			padding-top: 2rem;
+		}
+	</style>
 {% endblock stylesheets %}
-
 {% block body %}
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-3">
-                <div class="list-group">
-                    {% embed '@MazariniBootstrap/tool/iterative.html.twig' with {'items': steps} only %}
-                        {% block item_container %}
-                            {% include '@MazariniBootstrap/list/link.html.twig' with {'href': path('bootstrap_index', {'step': key}), 'label': key} only %}
-                        {% endblock item_container %}
-                    {% endembed %}
-                </div>
-            </div>
-            <div class="col-9">
-                {% block content %}{% endblock content %}
-            </div>
-        </div>
-    </div>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-3">
+				{% include '@MazariniTest/step/menu.html.twig' with {'items': steps} %}
+			</div>
+			<div class="col-9">
+				{% block content %}{% endblock content %}
+			</div>
+		</div>
+	</div>
 {% endblock body %}

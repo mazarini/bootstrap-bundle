@@ -1,0 +1,48 @@
+{# templates/step/01-Table.html.twig #}
+
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+
+	<div class="list-group">
+		{% embed '@MazariniBootstrap/tool/iterative.html.twig' with {'items': data.entities} only %}
+			{% block item_container %}
+
+				{% set href = '#' ~ item.COL1 %}
+				{% set label = item.COL2 %}
+				{% if key == 3 %}
+					{% set href = '' %}
+					{% set label = 'Active' %}
+				{% endif %}
+				{% if key == 5 %}
+					{% set href = '#' %}
+					{% set label = 'disabled' %}
+				{% endif %}
+
+				{% include '@MazariniBootstrap/list/link.html.twig' with {'href': href, 'label': label} only %}
+
+			{% endblock item_container %}
+		{% endembed %}
+	</div>
+	<br/>
+	<div class="list-group list-group-horizontal">
+		{% embed '@MazariniBootstrap/tool/iterative.html.twig' with {'items': data.entity} only %}
+			{% block item_container %}
+
+				{% set href = '#' ~ item %}
+				{% set label = item %}
+				{% if key == 'COL2' %}
+					{% set href = '' %}
+					{% set label = 'Active' %}
+				{% endif %}
+				{% if key == 'COL3' %}
+					{% set href = '#' %}
+					{% set label = 'disabled' %}
+				{% endif %}
+
+				{% include '@MazariniBootstrap/list/link.html.twig' with {'href': href, 'label': label} only %}
+
+			{% endblock item_container %}
+		{% endembed %}
+	</div>
+{% endblock content %}
