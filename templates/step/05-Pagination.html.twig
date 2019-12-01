@@ -32,20 +32,10 @@
 						{{ data.pagination.lastPage }}
 					</td>
 					<td>
-						{% embed '@MazariniBootstrap/pagination/nav.html.twig' with {'pagination': data.pagination} only %}
-							{% block number %}
-								{% set href = '#' ~ number %}
-								{% include '@MazariniBootstrap/pagination/item.html.twig' with {'href': href, 'number': number} only %}
-							{% endblock number %}
-						{% endembed %}
+						{% embed '@MazariniBootstrap/pagination/nav.html.twig' with {'data': data} only %}{% endembed %}
 					</td>
 					<td>
-						{% embed '@MazariniBootstrap/pagination/number.html.twig' with {'pagination': data.pagination} only %}
-							{% block number %}
-								{% set href = '#' ~ number %}
-								{% include '@MazariniBootstrap/pagination/item.html.twig' with {'href': href, 'number': number} only %}
-							{% endblock number %}
-						{% endembed %}
+						{% embed '@MazariniBootstrap/pagination/number.html.twig' with {'data': data} only %}{% endembed %}
 					</td>
 				</tr>
 			{% endfor %}

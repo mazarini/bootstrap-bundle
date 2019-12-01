@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "74693e1a83b9a17668cadb59b3a72464",
+    "content-hash": "3056feba3a154025b943f71aa47070bf",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -138,16 +138,16 @@
         },
         {
             "name": "mazarini/tools-bundle",
-            "version": "V0.9.0",
+            "version": "v0.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mazarini/tools-bundle.git",
-                "reference": "e236e16fe12d713e2bf0036ecf3620fbae027110"
+                "reference": "cd5c76c8bdcd64fc8404c56bd797275e4c5f7f13"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mazarini/tools-bundle/zipball/e236e16fe12d713e2bf0036ecf3620fbae027110",
-                "reference": "e236e16fe12d713e2bf0036ecf3620fbae027110",
+                "url": "https://api.github.com/repos/mazarini/tools-bundle/zipball/cd5c76c8bdcd64fc8404c56bd797275e4c5f7f13",
+                "reference": "cd5c76c8bdcd64fc8404c56bd797275e4c5f7f13",
                 "shasum": ""
             },
             "require": {
@@ -156,7 +156,7 @@
                 "ext-iconv": "*",
                 "ext-mbstring": "*",
                 "php": "^7.2|^8.0",
-                "symfony/flex": "^1.4"
+                "symfony/flex": "^1.5"
             },
             "conflict": {
                 "symfony/symfony": "*"
@@ -171,7 +171,8 @@
             "type": "symfony-bundle",
             "extra": {
                 "symfony": {
-                    "allow-contrib": true
+                    "allow-contrib": true,
+                    "require": "5.0.*"
                 },
                 "branch-alias": {
                     "dev-master": "1.0.x-dev"
@@ -193,13 +194,13 @@
                 }
             ],
             "description": "Basic toolset for symfony applications.",
-            "homepage": "https://github.com/mazarini/tools-test",
+            "homepage": "https://github.com/mazarini/tools-bundle",
             "keywords": [
                 "bundle",
                 "symfony",
                 "toolset"
             ],
-            "time": "2019-11-29T18:17:37+00:00"
+            "time": "2019-12-01T11:25:31+00:00"
         },
         {
             "name": "psr/event-dispatcher",
@@ -593,16 +594,16 @@
         },
         {
             "name": "symfony/flex",
-            "version": "v1.5.0",
+            "version": "v1.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/flex.git",
-                "reference": "97d4d94bff1b6bd9e9c5750ddbe248185ecb588b"
+                "reference": "45ec0287c13fb8383d61bc8486ee5da5c43556fe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/flex/zipball/97d4d94bff1b6bd9e9c5750ddbe248185ecb588b",
-                "reference": "97d4d94bff1b6bd9e9c5750ddbe248185ecb588b",
+                "url": "https://api.github.com/repos/symfony/flex/zipball/45ec0287c13fb8383d61bc8486ee5da5c43556fe",
+                "reference": "45ec0287c13fb8383d61bc8486ee5da5c43556fe",
                 "shasum": ""
             },
             "require": {
@@ -638,7 +639,7 @@
                 }
             ],
             "description": "Composer plugin for Symfony",
-            "time": "2019-11-30T11:43:11+00:00"
+            "time": "2019-12-01T09:24:34+00:00"
         },
         {
             "name": "symfony/http-foundation",

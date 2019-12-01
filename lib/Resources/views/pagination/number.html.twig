@@ -1,14 +1,16 @@
 {# lib/Resources/views/pagination/number.html.twig #}
 
 {% block pagination_container %}
-	{% if pagination.lastPage > 0 %}
+	{% if data.pagination.lastPage > 0 %}
 		<nav>
 			<ul class="pagination justify-content-center">
-				{% for number in 1..pagination.lastPage %}
-					{% if pagination.currentPage == number %}
-						{% include '@MazariniBootstrap/pagination/item.html.twig' with {'href': '', 'number': number} only %}
+				{% for number in 1..data.pagination.lastPage %}
+					{% if data.pagination.currentPage == number %}
+						{% include '@MazariniBootstrap/pagination/item.html.twig' with {'link': data.hrefs['page_' ~ number], 'number': number} only %}
 					{% else %}
-						{% block number %}{% endblock number %}
+						{% block number %}
+							{% include '@MazariniBootstrap/pagination/item.html.twig' with {'link': data.hrefs['page_' ~ number], 'number': number} only %}
+						{% endblock number %}
 					{% endif %}
 				{% endfor %}
 			</ul>

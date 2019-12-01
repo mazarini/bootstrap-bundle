@@ -19,7 +19,7 @@
         "ext-iconv": "*",
         "ext-mbstring": "*",
         "mazarini/tools-bundle": "^0.9",
-        "symfony/flex": "^1.4",
+        "symfony/flex": "^1.5",
         "symfony/twig-bundle": "^4.3|^5.0|^5.1"
     },
     "require-dev": {

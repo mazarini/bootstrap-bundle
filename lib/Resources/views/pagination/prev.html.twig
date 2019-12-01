@@ -1,8 +1,7 @@
 {# lib/Resources/views/pagination/prev.html.twig #}
 
-{% use '@MazariniBootstrap/pagination/item.html.twig' %}
+{% extends '@MazariniBootstrap/pagination/item.html.twig' %}
 
-{% set number = 'Prev' %}
-{% block item_container %}
-    {{ parent() }}
-{% endblock %}
+{% block label %}
+	Prev
+{% endblock label %}

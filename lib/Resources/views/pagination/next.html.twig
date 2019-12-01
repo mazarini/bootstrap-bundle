@@ -1,8 +1,7 @@
 {# lib/Resources/views/pagination/next.html.twig #}
 
-{% use '@MazariniBootstrap/pagination/item.html.twig' %}
+{% extends '@MazariniBootstrap/pagination/item.html.twig' %}
 
-{% set number = 'Next' %}
-{% block item_container %}
-    {{ parent() }}
-{% endblock %}
+{% block label %}
+	Next
+{% endblock label %}

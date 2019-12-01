@@ -24,12 +24,6 @@
 
 	{% endembed %}
 
-	{% embed '@MazariniBootstrap/pagination/nav.html.twig' with {'pagination': data.pagination} %}
-
-		{% block number %}
-			{% include '@MazariniBootstrap/pagination/item.html.twig' with {'href': '#' ~ number, 'number': number} only %}
-		{% endblock number %}
-
-	{% endembed %}
+	{% embed '@MazariniBootstrap/pagination/nav.html.twig' with {'pagination': data.pagination} %}{% endembed %}
 
 {% endblock content %}
