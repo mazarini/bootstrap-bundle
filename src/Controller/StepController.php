@@ -20,11 +20,13 @@
 namespace App\Controller;
 
 use Mazarini\TestBundle\Controller\StepController as BaseController;
-use Mazarini\TestBundle\Fake\Pagination;
-use Mazarini\ToolsBundle\Controller\ControllerAbstract;
+use Mazarini\TestBundle\Fake\Repository;
+use Mazarini\TestBundle\Fake\UrlGenerator;
+use Mazarini\TestBundle\Tool\Folder;
 use Mazarini\ToolsBundle\Data\Data;
-use Mazarini\ToolsBundle\Href\Hrefs;
+use Mazarini\ToolsBundle\Pagination\PaginationInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -32,41 +34,63 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class StepController extends BaseController
 {
-    public function __construct(RequestStack $requestStack, Hrefs $hrefs, Data $data)
+    /**
+     * @var requestStack
+     */
+    protected $requestStack;
+    /**
+     * @var UrlGenerator
+     */
+    protected $router;
+
+    public function __construct(RequestStack $requestStack, UrlGenerator $router)
     {
-        parent::__construct($requestStack, $hrefs, $data);
-        $this->parameters['datas'] = $this->getDatas($requestStack);
+        parent::__construct($requestStack);
+        $this->requestStack = $requestStack;
+        $this->router = $router;
     }
 
-    protected function InitUrl(Data $data): ControllerAbstract
+    /**
+     * @Route("/{step}.html", name="step_index")
+     */
+    public function index(Folder $folder, string $step = ''): Response
     {
-        $data->gethrefs()->setCurrentUrl('#page_'.$data->getPagination()->getCurrentPage());
+        $this->parameters['datas'] = $this->getDatas();
 
-        return $this;
+        return parent::index($folder, $step);
     }
 
-    private function getDatas(RequestStack $requestStack): array
+    /**
+     * getDatas.
+     *
+     * @return array<Data>
+     */
+    private function getDatas(): array
     {
+        $repository = new Repository();
         $datas = [];
         $a = [0, 1, 45, 56, 89];
         foreach ($a as $i) {
-            $datas[] = $this->getData($requestStack, new Pagination(3, $i));
+            $datas[] = $this->getData($repository->getpage(3, $i));
         }
         $a = [1, 2, 5, 6];
         foreach ($a as $i) {
-            $datas[] = $this->getData($requestStack, new Pagination($i, 60));
+            $datas[] = $this->getData($repository->getpage($i));
         }
 
         return $datas;
     }
 
-    private function getData(RequestStack $requestStack, Pagination $pagination): Data
+    private function getData(PaginationInterface $pagination): Data
     {
-        $data = new Data();
+        $data = new Data(
+            $this->router,
+            'page',
+            sprintf('page-%d', $pagination->getCurrentPage()),
+            sprintf('#page-%d', $pagination->getCurrentPage())
+        );
         $data->setPagination($pagination);
-        $data->setHrefs(new Hrefs($requestStack));
-        $this->InitPaginationUrl($data);
-        $data->gethrefs()->setCurrentUrl('#page_'.$pagination->getCurrentPage());
+        $this->PaginationUrl($data);
 
         return $data;
     }
