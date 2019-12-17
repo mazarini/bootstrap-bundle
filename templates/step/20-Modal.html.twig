@@ -4,9 +4,9 @@
 
 {% block content %}
 	<div class="btn-group" role="group" aria-label="Basic example">
-		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalId">Toggle modal</button>
-		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#centeredId">Toggle modal centered</button>
-		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#scrollableId">Toggle modal scrollable</button>
+		{% include '@MazariniBootstrap/button/toggle.html.twig' with {'target': 'modalId', 'label': 'Toggle modal top'} %}
+		{% include '@MazariniBootstrap/button/toggle.html.twig' with {'target': 'centeredId', 'label': 'Toggle modal centered'} %}
+		{% include '@MazariniBootstrap/button/toggle.html.twig' with {'target': 'scrollableId', 'label': 'Toggle modal scrollable'} %}
 	</div>
 {% endblock content %}
 
