@@ -1,0 +1,50 @@
+{% block header_container %}
+	<thead>
+		<tr>
+			{% block header %}{% endblock %}
+		</tr>
+	</thead>
+{% endblock %}
+{% block body_container %}
+	<tbody>
+		{% block body %}
+			{% for entity in data.entities %}
+				{% block row_container %}
+					<tr>
+						{% block row %}{% endblock row %}
+						{% if data.links['show-' ~ entity.id].url != '#' %}
+							<td>
+								{% include '@MazariniBootstrap/button/link-sm.html.twig' with { 'link': data.links['show-' ~ entity.id]} %}
+								{% if data.links['edit-' ~ entity.id].url != '#' %}
+									{% include '@MazariniBootstrap/button/link-sm.html.twig' with { 'link': data.links['edit-' ~ entity.id]} %}
+								{% endif %}
+							</td>
+						{% endif %}
+					</tr>
+				{% endblock row_container %}
+			{% else %}
+				<tr>
+					{% block empty %}
+						<td colspan="{{ col + 1 }}">
+							{% block label_empty %}
+								No row
+							{% endblock label_empty %}
+						</td>
+					{% endblock empty %}
+				</tr>
+			{% endfor %}
+		{% endblock body %}
+	</tbody>
+{% endblock body_container %}
+{% block footer_container %}
+	{% if data.links.new.url != '#' %}
+		<tfoot>
+			<tr>
+				{% block footer %}
+					<td colspan="{{ col }}"></td>
+					<td>{% include '@MazariniBootstrap/button/link-sm.html.twig' with { 'link': data.links.new } %}</td>
+				{% endblock footer %}
+			</tr>
+		</tfoot>
+	{% endif %}
+{% endblock footer_container %}

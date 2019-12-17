@@ -3,27 +3,27 @@
 {% extends '@MazariniTest/step/layout.html.twig' %}
 
 {% block content %}
+	<table class="table">
+		{% embed '@MazariniBootstrap/index/data.html.twig' with {'col': 4, 'data': data} only %}
 
-	{% embed '@MazariniBootstrap/table/base.html.twig' %}
+			{% block header %}
+				<th>Col A</th>
+				<th>Col B</th>
+				<th>Col C</th>
+				<th>Col D</th>
+				<th>Action</th>
+			{% endblock header %}
 
-		{% block header %}
-			<th>Col A</th>
-			<th>Col B</th>
-			<th>Col C</th>
-			<th>Col D</th>
-		{% endblock header %}
+			{% block row %}
+				<td>{{ entity.COL1 }}</td>
+				<td>{{ entity.COL2 }}</td>
+				<td>{{ entity.COL3 }}</td>
+				<td>{{ entity.COL4 }}</td>
+			{% endblock row %}
 
-		{% block row %}
-			<td>{{ entity.COL1 }}</td>
-			<td>{{ entity.COL2 }}</td>
-			<td>{{ entity.COL3 }}</td>
-			<td>{{ entity.COL4 }}</td>
-		{% endblock row %}
+		{% endembed %}
+	</table>
 
-		{% block footer %}{% endblock footer %}
-
-	{% endembed %}
-
-	{% embed '@MazariniBootstrap/pagination/adapt.html.twig' with {'data': data} only %}{% endembed %}
+	{% include '@MazariniBootstrap/pagination/adapt.html.twig' with {'data': data} only %}
 
 {% endblock content %}
