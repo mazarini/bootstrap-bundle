@@ -1,32 +1,13 @@
 {# lib/Resources/views/pagination/nav.html.twig #}
 
-{% block pagination_container %}
-	{% if data.pagination.lastPage > 0 %}
-		<nav>
-			<ul class="pagination justify-content-center">
-				{% if data.pagination.lastPage > 5 %}
-					{% include '@MazariniBootstrap/pagination/first.html.twig' with {'link': data.links.first} only %}
-					{% include '@MazariniBootstrap/pagination/prev.html.twig' with {'link': data.links.previous} only %}
-					{% set start_n = data.pagination.currentPage %}
-					{% set end_n = data.pagination.currentPage %}
-				{% else %}
-					{% set start_n = 1 %}
-					{% set end_n = data.pagination.lastPage %}
-				{% endif %}
-				{% for number in start_n..end_n %}
-					{% if data.pagination.currentPage == number %}
-						{% include '@MazariniBootstrap/pagination/item.html.twig' with {'link': data.links['page_' ~ number], number: number} only %}
-					{% else %}
-						{% block number %}
-							{% include '@MazariniBootstrap/pagination/item.html.twig' with {'link': data.links['page_' ~ number], number: number} only %}
-						{% endblock number %}
-					{% endif %}
-				{% endfor %}
-				{% if data.pagination.lastPage > 5 %}
-					{% include '@MazariniBootstrap/pagination/next.html.twig' with {'link': data.links.next} only %}
-					{% include '@MazariniBootstrap/pagination/last.html.twig' with {'link': data.links.last} only %}
-				{% endif %}
-			</ul>
-		</nav>
-	{% endif %}
-{% endblock pagination_container %}
+{% block nav_container %}
+	<nav>
+		<ul class="pagination justify-content-center">
+			{% include '@MazariniBootstrap/pagination/first.html.twig' with {'link': data.links.first} only %}
+			{% include '@MazariniBootstrap/pagination/prev.html.twig' with {'link': data.links.previous} only %}
+			{% include '@MazariniBootstrap/pagination/item.html.twig' with {'link': data.links['page-' ~ data.pagination.currentPage], label: data.pagination.currentPage ~ '/' ~ data.pagination.lastPage} only %}
+			{% include '@MazariniBootstrap/pagination/next.html.twig' with {'link': data.links.next} only %}
+			{% include '@MazariniBootstrap/pagination/last.html.twig' with {'link': data.links.last} only %}
+		</ul>
+	</nav>
+{% endblock nav_container %}

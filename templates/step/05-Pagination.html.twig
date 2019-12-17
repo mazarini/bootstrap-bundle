@@ -16,8 +16,8 @@
 	<table class="table table-bordered">
 		<thead>
 			<tr>
-				<th>Current</th>
-				<th>Last page</th>
+				<th>Cur.</th>
+				<th>Last</th>
 				<th>nav</th>
 				<th>num</th>
 			</tr>
@@ -35,7 +35,10 @@
 						{% embed '@MazariniBootstrap/pagination/nav.html.twig' with {'data': data} only %}{% endembed %}
 					</td>
 					<td>
-						{% embed '@MazariniBootstrap/pagination/number.html.twig' with {'data': data} only %}{% endembed %}
+						{% embed '@MazariniBootstrap/pagination/num.html.twig' with {'data': data} only %}{% endembed %}
+					</td>
+					<td>
+						{% embed '@MazariniBootstrap/pagination/adapt.html.twig' with {'data': data} only %}{% endembed %}
 					</td>
 				</tr>
 			{% endfor %}
