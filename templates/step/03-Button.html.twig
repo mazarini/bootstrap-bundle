@@ -1,0 +1,37 @@
+{# templates/step/01-Table.html.twig #}
+
+{% extends '@MazariniTest/step/layout.html.twig' %}
+
+{% block content %}
+
+	{% embed '@MazariniBootstrap/table/base.html.twig' %}
+
+		{% block header %}
+			<th>Submit</th>
+			<th>Toggle</th>
+			<th>Link</th>
+		{% endblock header %}
+
+		{% block body %}
+			<tr>
+				<td>{% include '@MazariniBootstrap/button/submit.html.twig' with { 'link': data.links.edit, 'label': 'Normal' } %}</td>
+				<td>{% include '@MazariniBootstrap/button/toggle.html.twig' with { 'link': data.links.edit, 'label': 'Normal' } %}</td>
+				<td>{% include '@MazariniBootstrap/button/link.html.twig' with { 'link': data.links.edit, 'label': 'Normal' } %}</td>
+			</tr>
+			<tr>
+				<td>{% include '@MazariniBootstrap/button/submit.html.twig' with { 'link': data.links.active } %}</td>
+				<td>{% include '@MazariniBootstrap/button/toggle.html.twig' with { 'link': data.links.active } %}</td>
+				<td>{% include '@MazariniBootstrap/button/link.html.twig' with { 'link': data.links.active } %}</td>
+			</tr>
+			<tr>
+				<td>{% include '@MazariniBootstrap/button/submit.html.twig' with { 'link': data.links.disable } %}</td>
+				<td>{% include '@MazariniBootstrap/button/toggle.html.twig' with { 'link': data.links.disable } %}</td>
+				<td>{% include '@MazariniBootstrap/button/link.html.twig' with { 'link': data.links.disable } %}</td>
+			</tr>
+		{% endblock body %}
+
+		{% block footer %}{% endblock footer %}
+
+	{% endembed %}
+
+{% endblock content %}

@@ -1,0 +1,11 @@
+{# lib/Resources/views/button/base.html.twig #}
+
+{% block button %}
+	{% set label = label|default(link.label) %}
+	{% set class = class|default(' btn-outline-dark') %}
+	<button type="button" class="btn{{ class }}{{ link.class }}" data-toggle="button" autocomplete="off">
+		{% block label %}
+			{{ label }}
+		{% endblock label %}
+	</button>
+{% endblock button %}
