@@ -7,26 +7,36 @@
 	{% embed '@MazariniBootstrap/table/base.html.twig' %}
 
 		{% block header %}
-			<th>Submit</th>
-			<th>Toggle</th>
-			<th>Link</th>
+			<th></th>
+			<th>Normal</th>
+			<th>Active</th>
+			<th>Disable</th>
 		{% endblock header %}
 
 		{% block body %}
 			<tr>
+				<th>Submit</th>
 				<td>{% include '@MazariniBootstrap/button/submit.html.twig' with { 'link': data.links.edit, 'label': 'Normal' } %}</td>
-				<td>{% include '@MazariniBootstrap/button/toggle.html.twig' with { 'link': data.links.edit, 'label': 'Normal' } %}</td>
-				<td>{% include '@MazariniBootstrap/button/link.html.twig' with { 'link': data.links.edit, 'label': 'Normal' } %}</td>
-			</tr>
-			<tr>
 				<td>{% include '@MazariniBootstrap/button/submit.html.twig' with { 'link': data.links.active } %}</td>
-				<td>{% include '@MazariniBootstrap/button/toggle.html.twig' with { 'link': data.links.active } %}</td>
-				<td>{% include '@MazariniBootstrap/button/link.html.twig' with { 'link': data.links.active } %}</td>
+				<td>{% include '@MazariniBootstrap/button/submit.html.twig' with { 'link': data.links.disable } %}</td>
 			</tr>
 			<tr>
-				<td>{% include '@MazariniBootstrap/button/submit.html.twig' with { 'link': data.links.disable } %}</td>
-				<td>{% include '@MazariniBootstrap/button/toggle.html.twig' with { 'link': data.links.disable } %}</td>
+				<th>Toggle</th>
+				<td>{% include '@MazariniBootstrap/button/toggle.html.twig' with { 'label': 'Normal', 'target': 'example' } %}</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<th>Link</th>
+				<td>{% include '@MazariniBootstrap/button/link.html.twig' with { 'link': data.links.edit, 'label': 'Normal' } %}</td>
+				<td>{% include '@MazariniBootstrap/button/link.html.twig' with { 'link': data.links.active } %}</td>
 				<td>{% include '@MazariniBootstrap/button/link.html.twig' with { 'link': data.links.disable } %}</td>
+			</tr>
+			<tr>
+				<th>Small link</th>
+				<td>{% include '@MazariniBootstrap/button/link-sm.html.twig' with { 'link': data.links.edit, 'label': 'Normal' } %}</td>
+				<td>{% include '@MazariniBootstrap/button/link-sm.html.twig' with { 'link': data.links.active } %}</td>
+				<td>{% include '@MazariniBootstrap/button/link-sm.html.twig' with { 'link': data.links.disable } %}</td>
 			</tr>
 		{% endblock body %}
 
