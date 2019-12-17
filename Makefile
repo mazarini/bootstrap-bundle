@@ -20,7 +20,7 @@ composer:
 
 twig:
 	bin/console lint:twig templates/ lib/Resources/views/
-#	twigcs templates -vv
+	twigcs templates -vv
 	twigcs lib/Resources/views -vv
 
 

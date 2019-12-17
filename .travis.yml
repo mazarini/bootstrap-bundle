@@ -82,7 +82,7 @@ script:
   - '[[ "$CONTROL" == "" ]] || ./bin/phpunit -v --coverage-text'
   - '[[ "$CONTROL" == "" ]] || security-checker security:check'
   - '[[ "$CONTROL" == "" ]] || php-cs-fixer fix'
-# - '[[ "$CONTROL" == "" ]] || twigcs templates -vv'
+  - '[[ "$CONTROL" == "" ]] || twigcs templates -vv'
   - '[[ "$CONTROL" == "" ]] || twigcs lib/Resources/views -vv'
   - '[[ "$CONTROL" == "" ]] || bin/console lint:twig lib/Resources/views/'
   - '[[ "$CONTROL" == "" ]] || phpstan analyse lib src tests --level max'

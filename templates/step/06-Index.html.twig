@@ -24,6 +24,6 @@
 
 	{% endembed %}
 
-	{% embed '@MazariniBootstrap/pagination/nav.html.twig' with {'pagination': data.pagination} %}{% endembed %}
+	{% embed '@MazariniBootstrap/pagination/adapt.html.twig' with {'data': data} only %}{% endembed %}
 
 {% endblock content %}

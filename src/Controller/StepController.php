@@ -84,7 +84,7 @@ class StepController extends BaseController
     {
         $data = new Data(
             $this->router,
-            'page',
+            'step',
             sprintf('page-%d', $pagination->getCurrentPage()),
             sprintf('#page-%d', $pagination->getCurrentPage())
         );

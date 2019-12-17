@@ -1704,12 +1704,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mazarini/test-bundle.git",
-                "reference": "af66b44828e2642d67245af043d6d8d9445c43d3"
+                "reference": "6c0446d1d3cb8d4908cd664d72063589de9a0746"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mazarini/test-bundle/zipball/af66b44828e2642d67245af043d6d8d9445c43d3",
-                "reference": "af66b44828e2642d67245af043d6d8d9445c43d3",
+                "url": "https://api.github.com/repos/mazarini/test-bundle/zipball/6c0446d1d3cb8d4908cd664d72063589de9a0746",
+                "reference": "6c0446d1d3cb8d4908cd664d72063589de9a0746",
                 "shasum": ""
             },
             "require": {
@@ -1761,7 +1761,7 @@
                 "symfony",
                 "test"
             ],
-            "time": "2019-12-16T20:49:11+00:00"
+            "time": "2019-12-17T11:30:07+00:00"
         },
         {
             "name": "monolog/monolog",
