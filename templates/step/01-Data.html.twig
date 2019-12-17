@@ -1,8 +1,14 @@
 {# templates/step/01-Card.html.twig #}
 
-{% extends 'layout.html.twig' %}
+{% extends '@MazariniTest/step/layout.html.twig' %}
 
 {% block content %}
-	{{ dump(data) }}
-	{{ dump(datas) }}
+	<h2>List</h2>
+	{{ dump(list) }}
+	<h2>Tree</h2>
+	{{ dump(tree) }}
+	<h2>Entities</h2>
+	{{ dump(data.Entities) }}
+	<h2>All parms</h2>
+	{{ dump() }}
 {% endblock content %}

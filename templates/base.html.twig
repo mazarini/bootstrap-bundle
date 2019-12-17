@@ -5,21 +5,40 @@
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>
-            {%- block title -%}{%- endblock -%}
-        </title>
-            {% block stylesheets -%}
-                {{ parent() }}
-            {%- endblock stylesheets %}
-    </head>
-    <body>
-        {% block static %}{% endblock %}
-        {% block body %}{% endblock %}
-        {% block javascripts -%}
-            {{ parent() }}
-        {%- endblock javascripts %}
-        {% block modal %}{% endblock modal %}
-    </body>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block head_title %}{% endblock %}
+		</title>
+		{% block stylesheets %}
+			{{ parent() }}
+			<style>
+				body {
+					margin-top: 15px;
+				}
+			</style>
+		{% endblock stylesheets %}
+	</head>
+	<body>
+		{% block static %}{% endblock %}
+		{% block body %}
+			<div class="container">
+				<div class="row">
+					<div class="col-3">
+						{% block menu %}{% endblock menu %}
+					</div>
+					<div class="col-9">
+						<h1>
+							{% block title %}{% endblock %}
+						</h1>
+						{% block content %}{% endblock %}
+					</div>
+				</div>
+			</div>
+		{% endblock %}
+		{% block javascripts %}
+			{{ parent() }}
+		{% endblock javascripts %}
+		{% block modal %}{% endblock modal %}
+	</body>
 </html>

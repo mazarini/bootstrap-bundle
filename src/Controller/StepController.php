@@ -33,8 +33,7 @@ use Symfony\Component\Routing\Annotation\Route;
  * @Route("/")
  */
 class StepController extends BaseController
-{
-    /**
+{/**
      * @var requestStack
      */
     protected $requestStack;
@@ -53,7 +52,7 @@ class StepController extends BaseController
     /**
      * @Route("/{step}.html", name="step_index")
      */
-    public function index(Folder $folder, string $step = ''): Response
+    public function index(Folder $folder, string $step): Response
     {
         $this->parameters['datas'] = $this->getDatas();
 
@@ -90,7 +89,7 @@ class StepController extends BaseController
             sprintf('#page-%d', $pagination->getCurrentPage())
         );
         $data->setPagination($pagination);
-        $this->PaginationUrl($data);
+        $this->initUrl($data);
 
         return $data;
     }
