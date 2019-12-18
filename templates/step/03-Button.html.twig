@@ -21,6 +21,12 @@
 				<td>{% include '@MazariniBootstrap/button/submit.html.twig' with { 'link': data.links.disable } %}</td>
 			</tr>
 			<tr>
+				<th>Validate</th>
+				<td>{% include '@MazariniBootstrap/button/validate.html.twig' %}</td>
+				<td>{% include '@MazariniBootstrap/button/validate.html.twig' with { 'label': 'Active', 'class': ' active'} %}</td>
+				<td>{% include '@MazariniBootstrap/button/validate.html.twig' with { 'label': 'Disable', 'class': ' disabled'} %}</td>
+			</tr>
+			<tr>
 				<th>Toggle</th>
 				<td>{% include '@MazariniBootstrap/button/toggle.html.twig' with { 'label': 'Normal', 'target': 'example' } %}</td>
 				<td></td>

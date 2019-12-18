@@ -1,9 +1,9 @@
 {# lib/Resources/views/button/base.html.twig #}
 
 {% block button %}
-	{% set label = label|default(link.label) %}
-	{% set class = class|default(' btn-primary') %}
-	<button type="submit" class="btn{{ class }}{{ link.class }}">
+	{% set label = label|default('Validate') %}
+	{% set class = ' btn-primary' ~ class|default('') %}
+	<button type="submit" class="btn{{ class }}">
 		{% block label %}
 			{{ label }}
 		{% endblock label %}

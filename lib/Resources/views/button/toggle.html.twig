@@ -1,7 +1,7 @@
 {# lib/Resources/views/button/base.html.twig #}
 
 {% block button %}
-	{% set class = class|default(' btn-outline-dark') %}
+	{% set class = class|default(' btn-primary') %}
 	<button type="button" class="btn{{ class }}" data-toggle="modal" data-target="#{{ target }}">
 		{% block label %}
 			{{ label }}
