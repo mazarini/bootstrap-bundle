@@ -3,25 +3,28 @@
 {% extends '@MazariniTest/step/layout.html.twig' %}
 
 {% block content %}
-	<table class="table">
-		{% embed '@MazariniBootstrap/index/data.html.twig' with {'col': 4, 'data': data} only %}
 
-			{% block header %}
+	<table class="table">
+
+		{% embed '@MazariniBootstrap/index/data.html.twig' with {'span': 4, 'data': data} only %}
+
+			{% block page_header %}
 				<th>Col A</th>
 				<th>Col B</th>
 				<th>Col C</th>
 				<th>Col D</th>
 				<th>Action</th>
-			{% endblock header %}
+			{% endblock page_header %}
 
-			{% block row %}
+			{% block page_row %}
 				<td>{{ entity.COL1 }}</td>
 				<td>{{ entity.COL2 }}</td>
 				<td>{{ entity.COL3 }}</td>
 				<td>{{ entity.COL4 }}</td>
-			{% endblock row %}
+			{% endblock page_row %}
 
 		{% endembed %}
+
 	</table>
 
 	{% include '@MazariniBootstrap/pagination/adapt.html.twig' with {'data': data} only %}
