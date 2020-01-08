@@ -36,5 +36,6 @@ class HomeControllerTest extends HomeControllerAbstractTest
     public function getUrls(): \Traversable
     {
         yield [''];
+        yield ['/System'];
     }
 }

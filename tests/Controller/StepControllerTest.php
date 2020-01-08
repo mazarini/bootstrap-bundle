@@ -19,22 +19,8 @@
 
 namespace App\Tests\Controller;
 
-use Mazarini\TestBundle\Test\Controller\UrlControllerAbstractTest;
-use Mazarini\TestBundle\Tool\Folder;
+use Mazarini\TestBundle\Test\Controller\StepControllerAbstractTest;
 
-class StepControllerTest extends UrlControllerAbstractTest
+class StepControllerTest extends StepControllerAbstractTest
 {
-    /**
-     * getUrls.
-     *
-     * @return \Traversable<int,array>
-     */
-    public function getUrls(): \Traversable
-    {
-        $folder = new Folder();
-        $steps = $folder->getSteps();
-        foreach ($steps as $step => $dummy) {
-            yield ['/'.$step.'.html'];
-        }
-    }
 }

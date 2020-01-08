@@ -2,8 +2,9 @@
 
 {% use '@MazariniBootstrap/table/content.html.twig' %}
 
-<table class="table">
-    {% block content_container %}
-        {{ parent() }}
-    {% endblock content_container %}
+{% set class = class|default('table') %}
+<table class="{{ class }}">
+	{% block content_container %}
+		{{ parent() }}
+	{% endblock content_container %}
 </table>

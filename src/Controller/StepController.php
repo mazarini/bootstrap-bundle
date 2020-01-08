@@ -26,37 +26,24 @@ use Mazarini\TestBundle\Tool\Folder;
 use Mazarini\ToolsBundle\Data\Data;
 use Mazarini\ToolsBundle\Pagination\PaginationInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/")
  */
 class StepController extends BaseController
-{/**
-     * @var requestStack
-     */
-    protected $requestStack;
+{
     /**
      * @var UrlGenerator
      */
     protected $router;
 
-    public function __construct(RequestStack $requestStack, UrlGenerator $router)
+    public function __construct(RequestStack $requestStack, UrlGenerator $router, Folder $folder)
     {
-        parent::__construct($requestStack);
-        $this->requestStack = $requestStack;
+        parent::__construct($requestStack, $folder);
         $this->router = $router;
-    }
 
-    /**
-     * @Route("/{step}.html", name="step_index")
-     */
-    public function index(Folder $folder, string $step): Response
-    {
         $this->parameters['datas'] = $this->getDatas();
-
-        return parent::index($folder, $step);
     }
 
     /**
@@ -68,7 +55,7 @@ class StepController extends BaseController
     {
         $repository = new Repository();
         $datas = [];
-        $a = [0, 1, 45, 56, 89];
+        $a = [0, 1, 45, 56, 119];
         foreach ($a as $i) {
             $datas[] = $this->getData($repository->getpage(3, $i));
         }
@@ -84,12 +71,12 @@ class StepController extends BaseController
     {
         $data = new Data(
             $this->router,
-            'step',
-            sprintf('page-%d', $pagination->getCurrentPage()),
-            sprintf('#page-%d', $pagination->getCurrentPage())
+            'page',
+            sprintf('page_index-%d', $pagination->getCurrentPage()),
+            sprintf('#page_index-%d', $pagination->getCurrentPage())
         );
         $data->setPagination($pagination);
-        $this->initUrl($data);
+        $this->setPaginationUrl($data);
 
         return $data;
     }

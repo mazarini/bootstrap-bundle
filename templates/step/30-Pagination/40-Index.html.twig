@@ -6,7 +6,7 @@
 
 	<table class="table">
 
-		{% embed '@MazariniBootstrap/index/data.html.twig' with {'span': 4, 'data': data} only %}
+		{% embed '@MazariniBootstrap/index/data.html.twig' with {'span': 4, 'data': dataPagination} only %}
 
 			{% block page_header %}
 				<th>Col A</th>
@@ -27,6 +27,6 @@
 
 	</table>
 
-	{% include '@MazariniBootstrap/pagination/adapt.html.twig' with {'data': data} only %}
+	{% include '@MazariniBootstrap/pagination/adapt.html.twig' with {'data': dataPagination} only %}
 
 {% endblock content %}
