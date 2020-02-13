@@ -20,12 +20,10 @@
 namespace App\Controller;
 
 use Mazarini\TestBundle\Controller\StepController as BaseController;
-use Mazarini\TestBundle\Fake\Repository;
 use Mazarini\TestBundle\Fake\UrlGenerator;
-use Mazarini\TestBundle\Tool\Folder;
 use Mazarini\ToolsBundle\Data\Data;
-use Mazarini\ToolsBundle\Pagination\PaginationInterface;
-use Symfony\Component\HttpFoundation\RequestStack;
+use Mazarini\ToolsBundle\Data\Link;
+use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -38,12 +36,30 @@ class StepController extends BaseController
      */
     protected $router;
 
-    public function __construct(RequestStack $requestStack, UrlGenerator $router, Folder $folder)
+    protected function afterAction(string $action): void
     {
-        parent::__construct($requestStack, $folder);
-        $this->router = $router;
-
         $this->parameters['datas'] = $this->getDatas();
+        $this->parameters['symfony']['version'] = Kernel::VERSION;
+        $this->parameters['php']['version'] = PHP_VERSION;
+        $this->parameters['php']['extensions'] = get_loaded_extensions();
+        asort($this->parameters['php']['extensions'], SORT_FLAG_CASE | SORT_NATURAL);
+
+        $this->parameters['dataCrud'] = $this->fakeFactory->getCrudData();
+        $this->parameters['dataPagination'] = $this->fakeFactory->getPaginationData();
+        $this->parameters['dataLinks'] = $this->fakeFactory->getLinksData();
+
+        $this->parameters['tree'] = $tree = $this->fakeFactory->getTree('Tree', 'item', 5);
+        $tree['item-1'] = $item1 = $this->fakeFactory->getTree('Item-1', 'item-1', 2);
+        $item1['item-1-1'] = $this->fakeFactory->getTree('Item-1-1', 'item-1-1', 3);
+        $item1['item-1-2'] = $this->fakeFactory->getTree('Item-1-2', 'item-1-2', 2);
+        $tree['item-2'] = $this->fakeFactory->getTree('Item-2', 'item-2', 2);
+        $tree['item-4'] = $this->fakeFactory->getTree('Item-4', 'item-4', 2);
+
+        $this->parameters['list'] = $this->fakeFactory->getLinks('item', 7);
+        $this->parameters['list']['item-2'] = new Link('item-2', '#', 'Disable');
+        $this->parameters['list']['item-6'] = new Link('item-6', '', 'Active');
+
+        $this->parameters['dataLinks'] = $this->fakeFactory->getLinksData();
     }
 
     /**
@@ -53,31 +69,16 @@ class StepController extends BaseController
      */
     private function getDatas(): array
     {
-        $repository = new Repository();
-        $datas = [];
-        $a = [0, 1, 45, 56, 119];
-        foreach ($a as $i) {
-            $datas[] = $this->getData($repository->getpage(3, $i));
+        $datas[] = $this->fakeFactory->getPaginationData('crud_page', 1, 0);
+        $datas[] = $this->fakeFactory->getPaginationData('crud_page', 1, 1);
+
+        foreach ([45, 56, 119] as $i) {
+            $datas[] = $this->fakeFactory->getPaginationData('crud_page', 3, $i);
         }
-        $a = [1, 2, 5, 6];
-        foreach ($a as $i) {
-            $datas[] = $this->getData($repository->getpage($i));
+        foreach ([1, 2, 5, 6] as $i) {
+            $datas[] = $this->fakeFactory->getPaginationData('crud_page', $i);
         }
 
         return $datas;
-    }
-
-    private function getData(PaginationInterface $pagination): Data
-    {
-        $data = new Data(
-            $this->router,
-            'page',
-            sprintf('page_index-%d', $pagination->getCurrentPage()),
-            sprintf('#page_index-%d', $pagination->getCurrentPage())
-        );
-        $data->setPagination($pagination);
-        $this->setPaginationUrl($data);
-
-        return $data;
     }
 }

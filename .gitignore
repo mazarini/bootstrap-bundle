@@ -1,7 +1,9 @@
 ###> local ###
-/nbproject/private/
 /var/*
 !var/data
+/var/data/*
+!var/data/origine.db
+.php-version
 ###< local ###
 
 ###> symfony/framework-bundle ###

@@ -18,19 +18,23 @@
  */
 
 use App\Kernel;
-use Symfony\Component\Debug\Debug4;
+use Symfony\Component\Dotenv\Dotenv;
 use Symfony\Component\ErrorHandler\Debug;
 use Symfony\Component\HttpFoundation\Request;
 
-require dirname(__DIR__).'/config/bootstrap.php';
+require dirname(__DIR__).'/vendor/autoload.php';
+
+if (method_exists(Dotenv::class, 'bootEnv')) {
+    (new Dotenv())->bootEnv(dirname(__DIR__).'/.env');
+} elseif (method_exists(Dotenv::class, 'loadEnv')) {
+    // load all the .env files
+    (new Dotenv(false))->loadEnv(dirname(__DIR__).'/.env');
+}
 
 if ($_SERVER['APP_DEBUG']) {
     umask(0000);
-    if (class_exists(Debug::class)) {
-        Debug::enable();
-    } elseif (class_exists(Debug4::class)) {
-        Debug4::enable();
-    }
+
+    Debug::enable();
 }
 
 if ($trustedProxies = $_SERVER['TRUSTED_PROXIES'] ?? $_ENV['TRUSTED_PROXIES'] ?? false) {

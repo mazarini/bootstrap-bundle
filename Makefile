@@ -23,7 +23,6 @@ twig:
 	twigcs templates -vv
 	twigcs lib/Resources/views -vv
 
-
 yaml:
 	bin/console lint:yaml config lib/Resources/config phpstan.neon.dist .travis.yml
 
@@ -121,10 +120,11 @@ clean:
 	cp var/data/origine.db var/data/sqlite.db
 
 test:
-	vendor/bin/simple-phpunit -v
+	cp var/data/origine.db var/data/sqlite.db
+	bin/phpunit -v
 
 cover-text: clean
-	vendor/bin/simple-phpunit -v --coverage-text
+	bin/phpunit -v --coverage-text
 
 cover: clean
-	vendor/bin/simple-phpunit --coverage-html var/test-coverage
+	bin/phpunit --coverage-html var/test-coverage
