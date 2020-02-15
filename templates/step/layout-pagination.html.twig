@@ -1,0 +1,35 @@
+{# templates/step/04-pagination.html.twig #}
+
+{% extends '@MazariniTest/step/layout.html.twig' %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<style>
+		.table ul {
+			margin-bottom: 0;
+		}
+	</style>
+{% endblock stylesheets %}
+
+{% block content %}
+
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>Current page</th>
+				<th>Lines</th>
+				<th>Paginator</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for data in datas %}
+				<tr>
+					<td>{{ data.pagination.currentPage ~ ' / ' ~ data.pagination.lastPage }}</td>
+					<td>{{ data.entities.count ~ ' / ' ~ data.pagination.totalCount }}</td>
+					<td>{% block pagination %}{% endblock pagination %}</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+{% endblock content %}
