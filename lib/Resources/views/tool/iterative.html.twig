@@ -1,9 +1,0 @@
-{# lib/Resources/views/tool/iterativel.html.twig #}
-
-{% block iterative_container %}
-    {% for key, item in items %}
-        {% block item_container %}{% endblock item_container %}
-    {% else %}
-        {% block empty_container %}{% endblock empty_container %}
-    {% endfor %}
-{% endblock iterative_container %}
