@@ -19,8 +19,13 @@
         "ext-iconv": "*",
         "ext-mbstring": "*",
         "mazarini/tools-bundle": "^0.9|^1.0@dev",
-        "symfony/flex": "^1.5",
-        "symfony/twig-bundle": "^4.4|^5.0"
+        "symfony/console": "^4.4|^5.0",
+        "symfony/dotenv": "^4.4|^5.0",
+        "symfony/flex": "^1.6",
+        "symfony/framework-bundle": "^4.4|^5.0",
+        "symfony/translation": "^4.4|^5.0",
+        "symfony/twig-bundle": "^4.4|^5.0",
+        "symfony/yaml": "^4.4|^5.0"
     },
     "require-dev": {
         "doctrine/doctrine-bundle": "*",
