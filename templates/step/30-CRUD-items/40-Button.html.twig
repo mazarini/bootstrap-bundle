@@ -1,0 +1,16 @@
+{# templates/step/01-Table.html.twig #}
+
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+
+<h2>New</h2>
+{% include '@MazariniBootstrap/crud/_button.html.twig' with {'data': dataNew } %}
+
+<h2>Show</h2>
+{% include '@MazariniBootstrap/crud/_button.html.twig' with {'data': dataShow } %}
+
+<h2>Edit</h2>
+{% include '@MazariniBootstrap/crud/_button.html.twig' with {'data': dataEdit } %}
+
+{% endblock content %}

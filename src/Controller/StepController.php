@@ -19,6 +19,7 @@
 
 namespace App\Controller;
 
+use App\Form\FakeType;
 use Mazarini\TestBundle\Controller\StepController as BaseController;
 use Mazarini\ToolsBundle\Data\Data;
 use Symfony\Component\Routing\Annotation\Route;
@@ -32,6 +33,14 @@ class StepController extends BaseController
     {
         parent::afterAction($action);
         $this->parameters['datas'] = $this->getDatas();
+        $this->parameters['dataNew'] = $this->fakeFactory->getCrudData('crud_new');
+        $this->parameters['dataShow'] = $this->fakeFactory->getCrudData('crud_show');
+        $this->parameters['dataEdit'] = $this->fakeFactory->getCrudData('crud_edit');
+        $this->parameters['form'] = $this->container
+            ->get('form.factory')
+            ->createNamed('Entity', FakeType::class)
+            ->createView()
+        ;
     }
 
     /**
