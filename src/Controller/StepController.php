@@ -24,7 +24,7 @@ use Mazarini\ToolsBundle\Data\Data;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/")
+ * @Route("/step")
  */
 class StepController extends BaseController
 {
