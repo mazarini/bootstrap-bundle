@@ -1,6 +1,19 @@
-{% block content %}
-	{{ form_start(form) }}
+{{ form_start(form) }}
+
+{% block widget %}
 	{{ form_widget(form) }}
-	{% include '@MazariniBootstrap/crud/_button.html.twig' %}
-	{{ form_end(form) }}
-{% endblock %}
+{% endblock widget %}
+
+{% block cancel %}
+	{% if data.entity.isNew %}
+		{% include '@MazariniBootstrap/button/link.html.twig' with { 'link': data.links.index, 'label': 'Annuler' } %}
+	{% else %}
+		{% include '@MazariniBootstrap/button/link.html.twig' with { 'link': data.links.show, 'label': 'Annuler' } %}
+	{% endif %}
+{% endblock cancel %}
+
+{% block validate %}
+	<button class="btn btn-primary" type="submit">Valider</button>
+{% endblock validate %}
+
+{{ form_end(form) }}

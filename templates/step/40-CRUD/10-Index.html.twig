@@ -2,25 +2,23 @@
 
 {% block content %}
 
-		{% embed '@MazariniBootstrap/crud/_index.html.twig' with {'span': 4, 'data': dataPagination} only %}
+	{% embed '@MazariniBootstrap/crud/_index.html.twig' with {'span': 4, 'data': dataPagination} only %}
 
-			{% block page_header %}
-				<th>Col A</th>
-				<th>Col B</th>
-				<th>Col C</th>
-				<th>Col D</th>
-				<th>Action</th>
-			{% endblock page_header %}
+		{% block page_header %}
+			<th>Col A</th>
+			<th>Col B</th>
+			<th>Col C</th>
+			<th>Col D</th>
+			<th>Action</th>
+		{% endblock page_header %}
 
-			{% block page_row %}
-				<td>{{ entity.COL1 }}</td>
-				<td>{{ entity.COL2 }}</td>
-				<td>{{ entity.COL3 }}</td>
-				<td>{{ entity.COL4 }}</td>
-			{% endblock page_row %}
+		{% block page_row %}
+			<td>{{ entity.COL1 }}</td>
+			<td>{{ entity.COL2 }}</td>
+			<td>{{ entity.COL3 }}</td>
+			<td>{{ entity.COL4 }}</td>
+		{% endblock page_row %}
 
-		{% endembed %}
-
-		{{ dump(dataNew) }}
+	{% endembed %}
 
 {% endblock content %}

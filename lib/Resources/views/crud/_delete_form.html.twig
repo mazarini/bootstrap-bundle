@@ -1,15 +1,36 @@
-{% extends '@MazariniBootstrap/modal/centered.html.twig' %}
-{% block header_container %}{% endblock header_container %}
-{% block content %}
-	<p>Etes vous sur de vouloir supprimer cet élément ?</p>
-{% endblock %}
-{% block footer %}
-	<form method="post" action="{{ data.links['delete'].url }}">
-		<input type="hidden" name="_method" value="DELETE">
-		<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ data.entity.id) }}">
-		{% if data.links['delete'].url != '#' %}
-		    <button class="btn btn-primary" type="submit">Confirmer</button>
-        {% endif %}
-		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalDeleteId">Annuler</button>
-	</form>
-{% endblock %}
+{% set modal_id = modal_id|default('modalDeleteId') %}
+<div class="modal fade" id="{{ modal_id }}" role="dialog" tabindex="-1">
+	<div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-body">
+				{% if data.links['delete'].url == '#' %}
+					{% block content_not_allow %}
+						<p>La suppression n'est pas possible</p>
+					{% endblock content_not_allow %}
+				{% else %}
+					{% block content_confirm %}
+						<p>Etes vous sur de vouloir supprimer cet élément ?</p>
+					{% endblock content_confirm %}
+				{% endif %}
+			</div>
+			<div class="modal-footer">
+				{% if data.links['delete'].url == '#' %}
+					{% block close %}
+						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{ modal_id }}">Fermer</button>
+					{% endblock close %}
+				{% else %}
+					<form method="post" action="{{ data.links['delete'].url }}">
+						<input type="hidden" name="_method" value="DELETE">
+						<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ data.entity.id) }}">
+						{% block validate %}
+							<button class="btn btn-primary" type="submit">Confirmer</button>
+						{% endblock validate %}
+						{% block cancel %}
+							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{ modal_id }}">Annuler</button>
+						{% endblock cancel %}
+					</form>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</div>
