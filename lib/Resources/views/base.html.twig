@@ -1,4 +1,5 @@
 {% use '@MazariniBootstrap/part/stylesheets.html.twig' %}
+{% use '@MazariniBootstrap/message/messages.html.twig' %}
 {% use '@MazariniBootstrap/part/javascripts.html.twig' %}
 <!DOCTYPE html>
 <html>
@@ -24,6 +25,7 @@
 							<h1>
 								{% block title %}{% endblock title %}
 							</h1>
+							{% block messages %}{{ parent() }}{% endblock messages %}
 							{% block content %}{% endblock content %}
 						{% endblock body %}
 					</div>
