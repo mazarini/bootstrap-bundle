@@ -2,7 +2,7 @@
 
 {% block content %}
 
-	{% embed '@MazariniBootstrap/crud/_index.html.twig' with {'span': 4, 'data': dataPagination} only %}
+	{% embed '@MazariniBootstrap/crud/_index.html.twig' with {'span': 4, 'data': dataPagination(3, 10, 70, 10)} only %}
 
 		{% block page_header %}
 			<th>Col A</th>

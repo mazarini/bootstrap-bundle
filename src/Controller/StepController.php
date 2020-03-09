@@ -21,7 +21,6 @@ namespace App\Controller;
 
 use App\Form\FakeType;
 use Mazarini\TestBundle\Controller\StepController as BaseController;
-use Mazarini\ToolsBundle\Data\Data;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -29,37 +28,15 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class StepController extends BaseController
 {
-    protected function afterAction(string $action): void
+    protected function beforeRender(): void
     {
-        parent::afterAction($action);
-        $this->parameters['datas'] = $this->getDatas();
-        $this->parameters['dataNew'] = $this->fakeFactory->getCrudData('crud_new');
-        $this->parameters['dataShow'] = $this->fakeFactory->getCrudData('crud_show');
-        $this->parameters['dataEdit'] = $this->fakeFactory->getCrudData('crud_edit');
+        parent::beforeRender();
+        // $this->parameters['linkExtension'] = $this->linkExtension;
+        $this->linkExtension->setParentParameters([]);
         $this->parameters['form'] = $this->container
             ->get('form.factory')
             ->createNamed('Entity', FakeType::class)
             ->createView()
         ;
-    }
-
-    /**
-     * getDatas.
-     *
-     * @return array<Data>
-     */
-    private function getDatas(): array
-    {
-        $datas[] = $this->fakeFactory->getPaginationData('crud_page', 1, 0);
-        $datas[] = $this->fakeFactory->getPaginationData('crud_page', 1, 1);
-
-        foreach ([45, 56, 119] as $i) {
-            $datas[] = $this->fakeFactory->getPaginationData('crud_page', 3, $i);
-        }
-        foreach ([1, 2, 5, 6] as $i) {
-            $datas[] = $this->fakeFactory->getPaginationData('crud_page', $i);
-        }
-
-        return $datas;
     }
 }

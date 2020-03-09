@@ -4,13 +4,13 @@
 
 {% block content %}
 
-<h2>New</h2>
-{% include '@MazariniBootstrap/crud/_button.html.twig' with {'data': dataNew } %}
+	<h2>New</h2>
+	{% include '@MazariniBootstrap/crud/_button.html.twig' with {'data': dataCrud('new') } %}
 
-<h2>Show</h2>
-{% include '@MazariniBootstrap/crud/_button.html.twig' with {'data': dataShow } %}
+	<h2>Show</h2>
+	{% include '@MazariniBootstrap/crud/_button.html.twig' with {'data': dataCrud('show') } %}
 
-<h2>Edit</h2>
-{% include '@MazariniBootstrap/crud/_button.html.twig' with {'data': dataEdit } %}
+	<h2>Edit</h2>
+	{% include '@MazariniBootstrap/crud/_button.html.twig' with {'data': dataCrud('edit') } %}
 
 {% endblock content %}

@@ -4,8 +4,7 @@
 	<nav>
 		<ul class="pagination justify-content-center">
 			{% for number in 1..data.pagination.lastPage %}
-
-				{% include '@MazariniBootstrap/pagination/item.html.twig' with {'link': data.links['page-' ~ number]} only %}
+				{% include '@MazariniBootstrap/pagination/item.html.twig' with {'link': pageLink(number,number) } only %}
 			{% endfor %}
 		</ul>
 	</nav>

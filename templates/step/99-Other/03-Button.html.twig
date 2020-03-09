@@ -16,9 +16,9 @@
 		{% block body %}
 			<tr>
 				<th>Submit</th>
-				<td>{% include '@MazariniBootstrap/button/submit.html.twig' with { 'link': data.links.normal } only %}</td>
-				<td>{% include '@MazariniBootstrap/button/submit.html.twig' with { 'link': data.links.active } only %}</td>
-				<td>{% include '@MazariniBootstrap/button/submit.html.twig' with { 'link': data.links.disable } only %}</td>
+				<td>{% include '@MazariniBootstrap/button/submit.html.twig' with { 'link': linkStandard() } only %}</td>
+				<td>{% include '@MazariniBootstrap/button/submit.html.twig' with { 'link': linkActive() } only %}</td>
+				<td>{% include '@MazariniBootstrap/button/submit.html.twig' with { 'link': linkDisable() } only %}</td>
 			</tr>
 			<tr>
 				<th>Validate</th>
@@ -34,15 +34,15 @@
 			</tr>
 			<tr>
 				<th>Link</th>
-				<td>{% include '@MazariniBootstrap/button/link.html.twig' with { 'link': data.links.normal } only %}</td>
-				<td>{% include '@MazariniBootstrap/button/link.html.twig' with { 'link': data.links.active } only %}</td>
-				<td>{% include '@MazariniBootstrap/button/link.html.twig' with { 'link': data.links.disable } only %}</td>
+				<td>{% include '@MazariniBootstrap/button/link.html.twig' with { 'link': linkStandard() } only %}</td>
+				<td>{% include '@MazariniBootstrap/button/link.html.twig' with { 'link': linkActive() } only %}</td>
+				<td>{% include '@MazariniBootstrap/button/link.html.twig' with { 'link': linkDisable() } only %}</td>
 			</tr>
 			<tr>
 				<th>Small link</th>
-				<td>{% include '@MazariniBootstrap/button/link-sm.html.twig' with { 'link': data.links.normal } only %}</td>
-				<td>{% include '@MazariniBootstrap/button/link-sm.html.twig' with { 'link': data.links.active } only %}</td>
-				<td>{% include '@MazariniBootstrap/button/link-sm.html.twig' with { 'link': data.links.disable } only %}</td>
+				<td>{% include '@MazariniBootstrap/button/link-sm.html.twig' with { 'link': linkStandard() } only %}</td>
+				<td>{% include '@MazariniBootstrap/button/link-sm.html.twig' with { 'link': linkActive() } only %}</td>
+				<td>{% include '@MazariniBootstrap/button/link-sm.html.twig' with { 'link': linkDisable() } only %}</td>
 			</tr>
 		{% endblock body %}
 

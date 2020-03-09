@@ -4,7 +4,7 @@
 
 {% block content %}
 	<h2>Close</h2>
-	{% include '@MazariniBootstrap/accordion/close.html.twig' with {'items': tree, 'accordion': 'accordion1'} only %}
+	{% include '@MazariniBootstrap/accordion/close.html.twig' with {'items': treeSample(), 'accordion': 'accordion1'} only %}
 	<h2>Open</h2>
-	{% include '@MazariniBootstrap/accordion/open.html.twig' with {'items': tree, 'accordion': 'accordion2'} only %}
+	{% include '@MazariniBootstrap/accordion/open.html.twig' with {'items': treeSample(), 'accordion': 'accordion2'} only %}
 {% endblock content %}

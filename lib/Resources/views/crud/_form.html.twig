@@ -6,9 +6,9 @@
 
 {% block cancel %}
 	{% if data.entity.isNew %}
-		{% include '@MazariniBootstrap/button/link.html.twig' with { 'link': data.links.index, 'label': 'Annuler' } %}
+		{% include '@MazariniBootstrap/button/link.html.twig' with { 'link': indexLink('Annuler') } %}
 	{% else %}
-		{% include '@MazariniBootstrap/button/link.html.twig' with { 'link': data.links.show, 'label': 'Annuler' } %}
+		{% include '@MazariniBootstrap/button/link.html.twig' with { 'link': entityLink('Annuler','_show',data.entity), 'disable': false } %}
 	{% endif %}
 {% endblock cancel %}
 

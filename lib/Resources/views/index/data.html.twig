@@ -13,14 +13,13 @@
 					{% block page_row_container %}
 						<tr>
 							{% block page_row %}{% endblock page_row %}
-							{% if data.links['show-' ~ entity.id].url != '#' %}
+							{% block button_container %}
 								<td>
-									{% include '@MazariniBootstrap/button/link-sm.html.twig' with { 'link': data.links['show-' ~ entity.id]} %}
-									{% if data.links['edit-' ~ entity.id].url != '#' %}
-										{% include '@MazariniBootstrap/button/link-sm.html.twig' with { 'link': data.links['edit-' ~ entity.id]} %}
-									{% endif %}
+									{% block button %}
+										{% include '@MazariniBootstrap/button/link-sm.html.twig' with {'link': entityLink('Afficher', '_show', entity)} %}
+									{% endblock button %}
 								</td>
-							{% endif %}
+							{% endblock button_container %}
 						</tr>
 					{% endblock page_row_container %}
 				{% else %}
@@ -38,15 +37,13 @@
 		</tbody>
 	{% endblock page_body_container %}
 	{% block page_footer_container %}
-		{% if data.links['new'].url != '#' %}
-			<tfoot>
-				<tr>
-					{% block page_footer %}
-						<td colspan="{{ span }}"></td>
-						<td>{% include '@MazariniBootstrap/button/link-sm.html.twig' with { 'link': data.links['new'] } %}</td>
-					{% endblock page_footer %}
-				</tr>
-			</tfoot>
-		{% endif %}
+		<tfoot>
+			<tr>
+				{% block page_footer %}
+					<td colspan="{{ span }}"></td>
+					<td>{% include '@MazariniBootstrap/button/link-sm.html.twig' with {'link': childLink('Ajouter','_new')} %}</td>
+				{% endblock page_footer %}
+			</tr>
+		</tfoot>
 	{% endblock page_footer_container %}
 {% endblock page_data %}

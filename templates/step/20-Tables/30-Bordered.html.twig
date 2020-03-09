@@ -4,7 +4,7 @@
 
 {% block content %}
 
-	{% embed '@MazariniBootstrap/table/base.html.twig' with {'items': dataPagination.entities, 'class': 'table table-bordered'} only %}
+	{% embed '@MazariniBootstrap/table/base.html.twig' with {'items': entitiesFactory(3), 'class': 'table table-bordered'} only %}
 
 		{% block header %}
 			<th>Col A</th>

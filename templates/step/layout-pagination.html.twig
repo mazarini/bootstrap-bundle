@@ -22,13 +22,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			{% for data in datas %}
-				<tr>
-					<td>{{ data.pagination.currentPage ~ ' / ' ~ data.pagination.lastPage }}</td>
-					<td>{{ data.entities.count ~ ' / ' ~ data.pagination.totalCount }}</td>
-					<td>{% block pagination %}{% endblock pagination %}</td>
-				</tr>
-			{% endfor %}
+			{% block content_data %}{% endblock content_data %}
 		</tbody>
 	</table>
 

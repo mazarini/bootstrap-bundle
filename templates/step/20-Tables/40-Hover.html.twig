@@ -4,7 +4,7 @@
 
 {% block content %}
 
-	{% embed '@MazariniBootstrap/table/base.html.twig' with {'items': dataPagination.entities, 'class': 'table table-hover'} only %}
+	{% embed '@MazariniBootstrap/table/base.html.twig' with {'items': entitiesFactory(3), 'class': 'table table-hover'} only %}
 
 		{% block header %}
 			<th>Col A</th>

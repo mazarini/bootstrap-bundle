@@ -4,17 +4,13 @@
 	</tbody>
 </table>
 {% block edit %}
-	{% if data.links.edit.url != '#' %}
-		{% include '@MazariniBootstrap/button/link.html.twig' with { 'link': data.links.edit } %}
-	{% endif %}
+	{% include '@MazariniBootstrap/button/link.html.twig' with { 'link': entityLink('Modifier','_edit',data.entity), 'disable': false } %}
 {% endblock edit %}
 {% block delete %}
-	{% if data.links.delete.url != '#' %}
+	{% if entityLink('Supprimmer','_delete',data.entity).url != '#' %}
 		{% include '@MazariniBootstrap/button/toggle.html.twig' with { 'label': 'Supprimer', 'target': 'modalDeleteId' } %}
 	{% endif %}
 {% endblock delete %}
 {% block back %}
-	{% if data.links.index.url != '#' %}
-		{% include '@MazariniBootstrap/button/link.html.twig' with { 'link': data.links.index, 'label': 'Retour'} %}
-	{% endif %}
+	{% include '@MazariniBootstrap/button/link.html.twig' with { 'link': indexLink('Retour'), 'disable': false} %}
 {% endblock back %}

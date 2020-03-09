@@ -1,11 +1,13 @@
 {# lib/Resources/views/button/base.html.twig #}
 
 {% block button %}
-	{% set label = label|default(link.label) %}
-	{% set class = class|default(' btn-primary') %}
-	<a href="{{ link.url }}" class="btn{{ class }}{{ link.class }}" tabindex="-1" role="button">
-		{% block label %}
-			{{ label }}
-		{% endblock label %}
-	</a>
+	{% set disable = disable|default(true) %}
+	{% if link.url != '#' or disable %}
+		{% set class = class|default(' btn-primary') %}
+		<a href="{{ link.url }}" class="btn{{ class }}{{ link.class }}" tabindex="-1" role="button">
+			{% block label %}
+				{{ link.label }}
+			{% endblock label %}
+		</a>
+	{% endif %}
 {% endblock button %}

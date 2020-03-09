@@ -2,7 +2,7 @@
 
 {% block content %}
 
-	{% embed '@MazariniBootstrap/crud/_form.html.twig' with {'data': dataNew } %}
+	{% embed '@MazariniBootstrap/crud/_form.html.twig' with {'data': dataCrud('new') } %}
 
 		{% block widget %}
 			{{ parent() }}

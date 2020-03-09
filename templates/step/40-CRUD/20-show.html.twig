@@ -2,7 +2,7 @@
 
 {% block content %}
 
-	{% embed '@MazariniBootstrap/crud/_view.html.twig' with {'data': dataShow } %}
+	{% embed '@MazariniBootstrap/crud/_view.html.twig' with {'data': dataCrud('show') } %}
 
 		{% block content %}
 			<tr>

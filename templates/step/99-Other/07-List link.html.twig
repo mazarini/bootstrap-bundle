@@ -3,7 +3,7 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-	{% include '@MazariniBootstrap/list/v.html.twig' with {'list': list} only %}
+	{% include '@MazariniBootstrap/list/v.html.twig' with {'list': linksSample()} only %}
 	<br/>
-	{% include '@MazariniBootstrap/list/h.html.twig' with {'list': list} only %}
+	{% include '@MazariniBootstrap/list/h.html.twig' with {'list': linksSample()} only %}
 {% endblock content %}

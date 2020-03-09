@@ -4,7 +4,10 @@
 
 {% block content %}
 
-	{% embed '@MazariniBootstrap/table/base.html.twig' with {'items': dataPagination.entities, 'class': 'table table-striped'} only %}
+	<h2>3 rows</h2>
+
+	{% embed '@MazariniBootstrap/table/base.html.twig' with {'items': entitiesFactory(3), 'class': 'table table-striped'} only %}
+
 
 		{% block header %}
 			<th>Col A</th>
