@@ -3,7 +3,13 @@
 {% extends 'step/layout-pagination.html.twig' %}
 
 {% block content_data %}
-	{% for i in 0..10 %}
+   {% embed 'step/row-pagination.html.twig' with { 'data': dataPagination(1, 0, 0, 10), 'linkExtension': linkExtension } only %}
+        {% block content_pagination %}
+	        {{ dump(linkExtension) }}
+	        {% include '@MazariniBootstrap/pagination/adapt.html.twig' %}
+        {% endblock content_pagination %}
+    {% endembed %}
+    {% for i in 0..10 %}
 		{% embed 'step/row-pagination.html.twig' with { 'data': dataPagination(i, 10, i * 10, 10), 'linkExtension': linkExtension } only %}
 			{% block content_pagination %}
 				{{ dump(linkExtension) }}
