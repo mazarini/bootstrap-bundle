@@ -1,7 +1,7 @@
-{{ form_start(form) }}
+{{ form_start(data.formView) }}
 
 {% block widget %}
-	{{ form_widget(form) }}
+	{{ form_widget(data.formView) }}
 {% endblock widget %}
 
 {% block cancel %}
@@ -16,4 +16,4 @@
 	<button class="btn btn-primary" type="submit">Valider</button>
 {% endblock validate %}
 
-{{ form_end(form) }}
+{{ form_end(data.formView) }}

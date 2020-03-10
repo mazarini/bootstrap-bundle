@@ -19,7 +19,6 @@
 
 namespace App\Controller;
 
-use App\Form\FakeType;
 use Mazarini\TestBundle\Controller\StepController as BaseController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -33,10 +32,5 @@ class StepController extends BaseController
         parent::beforeRender();
         // $this->parameters['linkExtension'] = $this->linkExtension;
         $this->linkExtension->setParentParameters([]);
-        $this->parameters['form'] = $this->container
-            ->get('form.factory')
-            ->createNamed('Entity', FakeType::class)
-            ->createView()
-        ;
     }
 }
