@@ -37,13 +37,16 @@
 		</tbody>
 	{% endblock page_body_container %}
 	{% block page_footer_container %}
-		<tfoot>
-			<tr>
-				{% block page_footer %}
-					<td colspan="{{ span }}"></td>
-					<td>{% include '@MazariniBootstrap/button/link-sm.html.twig' with {'link': childLink('Ajouter','_new')} %}</td>
-				{% endblock page_footer %}
-			</tr>
-		</tfoot>
+		{% set link = childLink('Ajouter','_new') %}
+		{% if link.url != '#' %}
+			<tfoot>
+				<tr>
+					{% block page_footer %}
+						<td colspan="{{ span }}"></td>
+						<td>{% include '@MazariniBootstrap/button/link-sm.html.twig' with {'link': link} %}</td>
+					{% endblock page_footer %}
+				</tr>
+			</tfoot>
+		{% endif %}
 	{% endblock page_footer_container %}
 {% endblock page_data %}

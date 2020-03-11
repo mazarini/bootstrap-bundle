@@ -7,7 +7,7 @@
 	{% include '@MazariniBootstrap/button/link.html.twig' with { 'link': entityLink('Modifier','_edit',data.entity), 'disable': false } %}
 {% endblock edit %}
 {% block delete %}
-	{% if entityLink('Supprimmer','_delete',data.entity).url != '#' %}
+	{% if entityLink('Supprimer','_delete',data.entity).url != '#' %}
 		{% include '@MazariniBootstrap/button/toggle.html.twig' with { 'label': 'Supprimer', 'target': 'modalDeleteId' } %}
 	{% endif %}
 {% endblock delete %}
