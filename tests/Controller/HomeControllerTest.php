@@ -23,7 +23,7 @@ use Mazarini\TestBundle\Test\Controller\HomeControllerAbstractTest;
 
 class HomeControllerTest extends HomeControllerAbstractTest
 {
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
     }

@@ -14,28 +14,37 @@
         }
     ],
     "require": {
-        "php": "^7.2|^8.0",
+        "php": "^7.4.0",
         "ext-ctype": "*",
         "ext-iconv": "*",
-        "ext-mbstring": "*",
-        "mazarini/tools-bundle": "^0.9|^1.0@dev",
-        "symfony/console": "^4.4|^5.0",
-        "symfony/dotenv": "^4.4|^5.0",
-        "symfony/flex": "^1.6",
-        "symfony/framework-bundle": "^4.4|^5.0",
-        "symfony/translation": "^4.4|^5.0",
-        "symfony/twig-bundle": "^4.4|^5.0",
-        "symfony/yaml": "^4.4|^5.0"
+        "composer/package-versions-deprecated": "1.11.99.1",
+        "laminas/laminas-code": "^3.5",
+        "sensio/framework-extra-bundle": "^5.6",
+        "symfony/apache-pack": "^1.0",
+        "symfony/browser-kit": "5.2.*",
+        "symfony/css-selector": "5.2.*",
+        "symfony/dotenv": "5.2.*",
+        "symfony/flex": "^1.11",
+        "symfony/form": "5.2.*",
+        "symfony/framework-bundle": "5.2.*",
+        "symfony/proxy-manager-bridge": "5.2.*",
+        "symfony/security-bundle": "5.2.*",
+        "symfony/translation": "5.2.*",
+        "symfony/twig-bundle": "5.2.*",
+        "symfony/validator": "5.2.*",
+        "symfony/yaml": "5.2.*",
+        "twig/extra-bundle": "^2.12|^3.0",
+        "twig/intl-extra": "^3.1",
+        "twig/twig": "^2.12|^3.0"
     },
     "require-dev": {
-        "doctrine/doctrine-bundle": "*",
-        "doctrine/orm": "*",
-        "mazarini/package": "^1.0",
-        "mazarini/pagination-bundle": "^0.9|^1.0@dev",
-        "mazarini/test-bundle": "^0.9|^1.0@dev",
-        "symfony/debug-pack": "^1.0",
-        "symfony/maker-bundle": "^1.14",
-        "symfony/test-pack": "^1.0"
+        "symfony/debug-bundle": "^5.2",
+        "symfony/maker-bundle": "^1.26",
+        "symfony/monolog-bundle": "^3.0",
+        "symfony/phpunit-bridge": "^5.2",
+        "symfony/stopwatch": "^5.2",
+        "symfony/var-dumper": "^5.2",
+        "symfony/web-profiler-bundle": "^5.2"
     },
     "config": {
         "preferred-install": {
@@ -45,15 +54,20 @@
     },
     "autoload": {
         "psr-4": {
-            "Mazarini\\BootstrapBundle\\": "lib/"
+            "Mazarini\\BootstrapBundle\\": "lib/",
+            "Mazarini\\ToolsBundle\\": "component/tools-bundle/lib/"
         }
     },
     "autoload-dev": {
         "psr-4": {
             "App\\": "src/",
-            "App\\Tests\\": "tests/"
+            "App\\Tests\\": "tests/",
+            "Mazarini\\PaginationBundle\\": "component/pagination-bundle/lib/",
+            "Mazarini\\PackageBundle\\": "component/package-bundle/lib/",
+            "Mazarini\\TestBundle\\": "component/test-bundle/lib/"
         }
     },
+    "replace": {},
     "scripts": {
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
@@ -72,7 +86,7 @@
     "extra": {
         "symfony": {
             "allow-contrib": true,
-            "require": "5.0.*"
+            "require": "5.2.*"
         },
         "branch-alias": {
             "dev-master": "1.0.x-dev"
